@@ -1,23 +1,27 @@
-;;; meow-setup.el -*- lexical-binding: t; -*-
-;;
-;; Copyright (C) 2026 cody
-;;
-;; Author: cody <cody@revan>
-;; Maintainer: cody <cody@revan>
-;; Created: June 17, 2026
-;; Modified: June 17, 2026
-;; Version: 0.0.1
-;; Keywords: abbrev bib c calendar comm convenience data docs emulations extensions faces files frames games hardware help hypermedia i18n internal languages lisp local maint mail matching mouse multimedia news outlines processes terminals tex text tools unix vc wp
-;; Homepage: https://github.com/cody/meow-setup
-;; Package-Requires: ((emacs "24.3"))
-;;
-;; This file is not part of GNU Emacs.
-;;
-;;; Commentary:
-;;
-;;
-;;
-;;; Code:
+;; ;;; meow-setup.el -*- lexical-binding: t; -*-
+;; ;;
+;; ;; Copyright (C) 2026 cody
+;; ;;
+;; ;; Author: cody <cody@revan>
+;; ;; Maintainer: cody <cody@revan>
+;; ;; Created: June 17, 2026
+;; ;; Modified: June 17, 2026
+;; ;; Version: 0.0.1
+;; ;; Keywords: abbrev bib c calendar comm convenience data docs emulations extensions faces files frames games hardware help hypermedia i18n internal languages lisp local maint mail matching mouse multimedia news outlines processes terminals tex text tools unix vc wp
+;; ;; Homepage: https://github.com/cody/meow-setup
+;; ;; Package-Requires: ((emacs "24.3"))
+;; ;;
+;; ;; This file is not part of GNU Emacs.
+;; ;;
+;; ;;; Commentary:
+;; ;;
+;; ;;
+;; ;;
+;; ;;; Code:
+
+;; (straight-use-package 'meow)
+(setq meow-keypad-ctrl-meta-prefix ?G)
+(setq meow-keypad-meta-prefix ?M)
 
 (defun meow-setup ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
@@ -102,5 +106,37 @@
    '("'" . repeat)
    '("<escape>" . ignore)))
 
+(use-package meow
+  :demand t
+  :config
+  (meow-setup)
+  (meow-global-mode 1)
+  (meow-thing-register 'angle
+                       '(regexp "<" ">")
+                       '(regexp "<" ">"))
+  (meow-thing-register 'double-quote
+                       '(regexp "\"" "\"")
+                       '(regexp "\"" "\""))
+  (meow-thing-register 'single-quote
+                       '(regexp "'" "'")
+                       '(regexp "'" "'"))
+  (meow-thing-register 'backtick
+                       '(regexp "`" "`")
+                       '(regexp "`" "`"))
+  ;; (setq meow-char-thing-table
+  ;;       '((?\( . round)
+  ;;         (?\[ . square)
+  ;;         (?\{ . curly)
+  ;;         (?\< . angle)
+  ;;         (?\" . double-quote)
+  ;;         (?\' . single-quote)
+  ;;         (?\` . backtick)
+  ;;         (?e . symbol)
+  ;;         (?w . window)
+  ;;         (?b . buffer)
+  ;;         (?p . paragraph)
+  ;;         (?l . line)
+  ;; (?d . defun)))
+  )
+
 (provide 'meow-setup)
-;;; meow-setup.el ends here

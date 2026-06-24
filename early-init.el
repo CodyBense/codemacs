@@ -1,5 +1,4 @@
 ;;; early-init.el --- Description -*- lexical-binding: t; -*-
-
 (setq package-enable-at-startup nil)
 
 (setq gc-cons-threshold most-positive-fixnum
@@ -13,7 +12,14 @@
             (setq gc-cons-threshold (* 2 1024 1024)
                   gc-cons-percentage 0.1)))
 
-;;; UI - set frame parameters directly
+;;; File handler optimization — skip regex matching on every load
+(defvar my--old-file-name-handler-alist file-name-handler-alist)
+(setq file-name-handler-alist nil)
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq file-name-handler-alist my--old-file-name-handler-alist)))
+
+;;; UI — set frame parameters directly
 (push '(menu-bar-lines . 0) default-frame-alist)
 (push '(tool-bar-lines . 0) default-frame-alist)
 (push '(vertical-scroll-bars) default-frame-alist)
@@ -22,7 +28,7 @@
       tool-bar-mode nil
       scroll-bar-mode nil)
 
-;;; Performace
+;;; Performance
 (setq frame-resize-pixelwise t
       frame-inhibit-implied-resize t
       auto-mode-case-fold nil
@@ -34,9 +40,9 @@
               bidi-paragraph-direction 'left-to-right)
 (setq bidi-inhibit-bpa t)
 
-;;; PGTK latency fix
-(when (boundp 'pgtk-wait-for-event-timeout)
-  (setq pgtk-wait-for-event-timeout 0.001))
+;;; PGTK latency fix (if on Wayland)
+;; (when (boundp 'pgtk-wait-for-event-timeout)
+;;   (setq pgtk-wait-for-event-timeout 0.001))
 
 ;; UTF-8
 (set-charset-priority 'unicode)
@@ -51,13 +57,13 @@
                     :family "GeistMono Nerd Font"
                     :height 110)
 (set-face-attribute 'variable-pitch nil
-                    :family "Alegraya"
+                    :family "Alegreya"
                     :height 120)
 (set-face-attribute 'fixed-pitch nil
                     :family "GeistMono Nerd Font"
                     :height 110)
 
-;;; Native
+;;; Native comp
 (setq native-comp-async-report-warnings-errors 'silent)
 
 (provide 'early-init)
