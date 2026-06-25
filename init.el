@@ -160,9 +160,11 @@
 
 ;; Modules
 (add-to-list 'load-path (expand-file-name "lisp/" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lisp/custom/" user-emacs-directory))
 
 (require 'completion)
 (require 'dashboard)
+(require 'development)
 (require 'dired-config)
 (require 'javelin)
 (require 'lsp)
@@ -172,6 +174,7 @@
 (require 'org-config)
 (require 'org-roam-config)
 (require 'tabs)
+(require 'universal-launcher)
 (require 'vterm-config)
 (require 'workspaces)
 
