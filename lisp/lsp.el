@@ -1,4 +1,4 @@
-;;; tabs.el --- Description -*- lexical-binding: t; -*-
+;;; lsp.el --- Description -*- lexical-binding: t; -*-
 ;; TREESIT
 (use-package treesit
   :ensure nil
@@ -41,6 +41,10 @@
 
 (use-package nix-ts-mode
   :mode "\\.nix\\'")
+
+(use-package rust-mode
+  :ensure t
+  :mode "\\.rs\\'")
 
 ;; YASNIPPET
 ;; No :defer — yas-global-mode must be live before the first eglot buffer
@@ -89,7 +93,8 @@
          (c-ts-mode      . eglot-ensure)
          (nix-ts-mode    . eglot-ensure)
          (templ-ts-mode  . eglot-ensure)
-         (zig-mode       . eglot-ensure))
+         (zig-mode       . eglot-ensure)
+	     (rust-mode . eglot-ensure))
   :custom
   (eglot-autoshutdown       t)
   (eglot-events-buffer-size 0)
