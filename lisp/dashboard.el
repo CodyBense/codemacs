@@ -15,7 +15,7 @@
              (center (lambda (s)
                        (concat (make-string (max 0 (/ (- width (length s)) 2)) ?\s)
                                s)))
-             (lines (list (funcall center "Cody's Emacs")
+             (lines (list (funcall center "Codemacs")
                           ""
                           (funcall center (format "Emacs %s" emacs-version))
                           (funcall center (if (daemonp) "daemon" "standalone"))
