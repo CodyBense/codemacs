@@ -123,6 +123,8 @@
   (load custom-file))
 
 ;; UI
+;; temp till I can resolve nerd-icons error message
+(setq warning-minimum-level :error)
 (set-fringe-mode 10)
 (add-to-list 'custom-theme-load-path
              (expand-file-name "themes/" user-emacs-directory))
@@ -166,13 +168,16 @@
 (require 'dashboard)
 (require 'development)
 (require 'dired-config)
+(require 'editing)
 (require 'javelin)
+;; (require 'keys)
 (require 'lsp)
 (require 'magit-config)
 (require 'meow-setup)
 (require 'modeline)
 (require 'org-config)
 (require 'org-roam-config)
+(require 'spelling)
 (require 'tabs)
 (require 'universal-launcher)
 (require 'vterm-config)
