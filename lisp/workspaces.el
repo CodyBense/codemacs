@@ -152,6 +152,10 @@
 (setq tab-bar-show nil)
 
 ;;; Keybindings
+(global-set-key (kbd "C-x C-<tab> <tab>") '+workspace/display)
+(global-set-key (kbd "C-x C-<tab> n") '+workspace/new)
+(global-set-key (kbd "C-x C-<tab> d") '+workspace/delete)
+(global-set-key (kbd "C-x C-<tab> s") '+workspace/switch-to)
 
 (when (featurep 'consult)
   (setq consult-buffer-sources
