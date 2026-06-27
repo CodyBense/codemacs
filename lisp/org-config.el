@@ -9,6 +9,10 @@
         org-edit-src-content-indentation 0
         org-hide-leading-stars           t)
 
+  (add-hook 'org-mode-hook (lambda ()
+			                 (visual-line-mode 1)
+			                 (setq word-wrap 1)))
+
   ;; Heading navigation
   (define-key org-mode-map (kbd "<M-left>")  #'org-do-promote)
   (define-key org-mode-map (kbd "<M-right>") #'org-do-demote)
@@ -18,6 +22,15 @@
   (define-key org-mode-map (kbd "C-c e")   #'org-set-effort)
   (define-key org-mode-map (kbd "C-c i")   #'org-clock-in)
   (define-key org-mode-map (kbd "C-c o")   #'org-clock-out)
+
+  ;; Keybinds
+  (defun +find-org-file  (interactive)
+    (find-file "~/org"))
+
+  (global-unset-key (kbd "C-x o"))
+  (global-set-key (kbd "C-x o c") 'org-capture)
+  (global-set-key (kbd "C-x o a") 'org-agenda)
+  (global-set-key (kbd "C-x o f") '+find-org-file)
 
   ;; Calendar date navigation
   (with-eval-after-load 'org
@@ -547,6 +560,9 @@
      (python     . t)
      (C          . t)
      (go         . t))))
+
+;; PDF
+(setq org-file-apps '(("\\.pdf\\'" . "sioyek %s")))
 
 (provide 'org-config)
 ;;; org-mode-config.el ends here

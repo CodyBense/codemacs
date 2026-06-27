@@ -54,4 +54,8 @@
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start nil))
 
+(global-set-key (kbd "C-x o r f") 'org-roam-node-find)
+(global-set-key (kbd "C-x o r s") 'org-roam-db-sync)
+(global-set-key (kbd "C-x o r i") 'org-roam-node-insert)
+
 (provide 'org-roam-config)
